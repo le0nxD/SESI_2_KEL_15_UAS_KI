@@ -13,9 +13,9 @@
 
 ## 👨‍💻 Dibuat oleh:
 
-- 🧑‍💻 Muhammad Naufal Darlian (237006152)(https://github.com/le0nxD)
-- 🧑‍💻 Ardhi Fardan Kamil (237006176)(https://github.com/Kai2446-cmyk)
-- 🧑‍💻 Muhammad Lutfi Nurhakim (237006179)(https://github.com/Oxiliya)
+- 🧑‍💻 [**Muhammad Naufal Darlian (237006152)**](https://github.com/le0nxD)
+- 🧑‍💻 [**Ardhi Fardan Kamil (237006176)**](https://github.com/Kai2446-cmyk)
+- 🧑‍💻 [**Muhammad Lutfi Nurhakim (237006179)**](https://github.com/Oxiliya)
 
 ---
 
