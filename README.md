@@ -80,15 +80,6 @@ npm run dev
 }
 ```
 
----
-
-## 🛑 Catatan Keamanan
-
-⚠️ **Jangan expose private key ke frontend.**
-Jika ingin mengintegrasikan `signer.js` ke web, gunakan Express server sebagai handler API yang aman.
-
----
-
 ## 🤝 Kontribusi
 
 Kami sangat terbuka untuk:
