@@ -78,7 +78,7 @@ npm run dev
   "preview": "vite preview"
 }
 ```
-
+---
 ## 🤝 Kontribusi
 
 Kami sangat terbuka untuk:
