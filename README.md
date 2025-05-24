@@ -106,4 +106,3 @@ Distribusi di bawah lisensi MIT — bebas digunakan untuk pembelajaran, proyek, 
   Made with ❤️ by the <strong>SignProof Team</strong>
 </p>
 ```
-````
