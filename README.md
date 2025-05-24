@@ -1,8 +1,3 @@
-Berikut versi README `SignProof` yang **lebih estetik**, menggunakan elemen visual seperti emoji, ikon, dan struktur markdown yang lebih elegan & modern — cocok untuk GitHub:
-
----
-
-````markdown
 <h1 align="center">🛡️ SignProof</h1>
 <p align="center"><strong>Platform Tanda Tangan Digital Terdesentralisasi</strong></p>
 <p align="center">
