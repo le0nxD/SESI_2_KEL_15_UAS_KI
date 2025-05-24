@@ -13,7 +13,7 @@ import {
   FaSpinner,
   FaUpload,
   FaGithub, // Ditambahkan untuk ikon footer
-  FaEnvelope // Ditambahkan untuk ikon footer
+  FaEnvelope, // Ditambahkan untuk ikon footer
 } from "react-icons/fa";
 
 export default function SignAndVerifyPage() {
@@ -40,7 +40,8 @@ export default function SignAndVerifyPage() {
 
   // Objek untuk konten footer SignProof
   const signProofFooterInfo = {
-    description: "Solusi tanda tangan digital berbasis blockchain untuk keamanan dan integritas dokumen Anda di era digital.",
+    description:
+      "Solusi tanda tangan digital berbasis blockchain untuk keamanan dan integritas dokumen Anda di era digital.",
     // PERUBAHAN: Link navigasi disesuaikan
     navLinks: [
       { text: "Beranda", href: "/" },
@@ -52,16 +53,25 @@ export default function SignAndVerifyPage() {
       github: "https://github.com/your-signproof-repo", // GANTI DENGAN URL GITHUB SIGNPROOF
     },
     copyrightName: "SignProof",
-    copyrightSlogan: "Melangkah Maju di Era Digital."
+    copyrightSlogan: "Melangkah Maju di Era Digital.",
   };
 
   const scrollToResult = useCallback(() => {
-    setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }), 200);
+    setTimeout(
+      () =>
+        resultRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        }),
+      200
+    );
   }, []);
 
   const connectWallet = async () => {
     if (!window.ethereum) {
-      alert("MetaMask tidak terdeteksi! Silakan install MetaMask terlebih dahulu.");
+      alert(
+        "MetaMask tidak terdeteksi! Silakan install MetaMask terlebih dahulu."
+      );
       return;
     }
     try {
@@ -71,7 +81,9 @@ export default function SignAndVerifyPage() {
       setSignError("");
     } catch (error) {
       console.error("User rejected request or error connecting wallet:", error);
-      setSignError("Gagal menghubungkan dompet. Pengguna menolak permintaan atau terjadi kesalahan.");
+      setSignError(
+        "Gagal menghubungkan dompet. Pengguna menolak permintaan atau terjadi kesalahan."
+      );
     }
   };
 
@@ -94,7 +106,9 @@ export default function SignAndVerifyPage() {
       scrollToResult();
     } catch (error) {
       console.error("Error signing message:", error);
-      setSignError("Gagal menandatangani pesan. Pastikan transaksi disetujui di MetaMask.");
+      setSignError(
+        "Gagal menandatangani pesan. Pastikan transaksi disetujui di MetaMask."
+      );
     } finally {
       setSignLoading(false);
     }
@@ -106,10 +120,16 @@ export default function SignAndVerifyPage() {
   };
 
   const handleVerify = async () => {
-    const { message: msgToVerify, signature: sigToVerify, expectedSigner } = verifyInput;
+    const {
+      message: msgToVerify,
+      signature: sigToVerify,
+      expectedSigner,
+    } = verifyInput;
     if (!msgToVerify.trim() || !sigToVerify.trim() || !expectedSigner.trim()) {
       setVerifyResult("warning");
-      setVerifyMessage("Harap isi semua bidang: pesan, tanda tangan, dan alamat penanda tangan.");
+      setVerifyMessage(
+        "Harap isi semua bidang: pesan, tanda tangan, dan alamat penanda tangan."
+      );
       scrollToResult();
       return;
     }
@@ -123,12 +143,16 @@ export default function SignAndVerifyPage() {
         setVerifyMessage("✅ Tanda Tangan VALID");
       } else {
         setVerifyResult("invalid");
-        setVerifyMessage("❌ Tanda Tangan TIDAK VALID atau tidak cocok dengan alamat penanda tangan.");
+        setVerifyMessage(
+          "❌ Tanda Tangan TIDAK VALID atau tidak cocok dengan alamat penanda tangan."
+        );
       }
     } catch (error) {
       console.error("Error verifying signature:", error);
       setVerifyResult("error");
-      setVerifyMessage("⚠️ Terjadi kesalahan saat verifikasi. Pastikan format tanda tangan dan pesan benar.");
+      setVerifyMessage(
+        "⚠️ Terjadi kesalahan saat verifikasi. Pastikan format tanda tangan dan pesan benar."
+      );
     } finally {
       setVerifyLoading(false);
       scrollToResult();
@@ -144,7 +168,12 @@ export default function SignAndVerifyPage() {
 
     doc.setFont("helvetica", "bold");
     doc.setFontSize(16);
-    doc.text("Dokumen Tanda Tangan Digital - SignProof", pageWidth / 2, margin + 5, { align: "center" });
+    doc.text(
+      "Dokumen Tanda Tangan Digital - SignProof",
+      pageWidth / 2,
+      margin + 5,
+      { align: "center" }
+    );
 
     doc.setFont("helvetica", "normal");
     doc.setFontSize(11);
@@ -158,7 +187,7 @@ export default function SignAndVerifyPage() {
       : message;
     const splitMessage = doc.splitTextToSize(messageToDisplay, contentWidth);
     doc.text(splitMessage, margin, currentY);
-    currentY += (splitMessage.length * 5) + 7;
+    currentY += splitMessage.length * 5 + 7;
 
     doc.setFont("helvetica", "normal");
     doc.setFontSize(11);
@@ -181,8 +210,18 @@ export default function SignAndVerifyPage() {
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
     doc.setTextColor(100);
-    doc.text(`Dokumen ini telah ditandatangani secara digital pada ${new Date().toLocaleString()}`, pageWidth / 2, pageHeight - 15, { align: "center" });
-    doc.text("Divalidasi oleh Sistem SignProof", pageWidth / 2, pageHeight - 10, { align: "center" });
+    doc.text(
+      `Dokumen ini telah ditandatangani secara digital pada ${new Date().toLocaleString()}`,
+      pageWidth / 2,
+      pageHeight - 15,
+      { align: "center" }
+    );
+    doc.text(
+      "Divalidasi oleh Sistem SignProof",
+      pageWidth / 2,
+      pageHeight - 10,
+      { align: "center" }
+    );
 
     doc.save("dokumen-tertandatangani-signproof.pdf");
   };
@@ -196,24 +235,41 @@ export default function SignAndVerifyPage() {
 
     doc.setFont("helvetica", "bold");
     doc.setFontSize(16);
-    doc.text("Laporan Verifikasi Tanda Tangan - SignProof", pageWidth / 2, margin + 5, { align: "center" });
+    doc.text(
+      "Laporan Verifikasi Tanda Tangan - SignProof",
+      pageWidth / 2,
+      margin + 5,
+      { align: "center" }
+    );
 
     let currentY = margin + 20;
     doc.setFont("helvetica", "bold");
     doc.setFontSize(11);
-    const statusColor = verifyResult === "valid" ? [0,100,0] : (verifyResult === "warning" ? [153,102,0] : [139,0,0]);
+    const statusColor =
+      verifyResult === "valid"
+        ? [0, 100, 0]
+        : verifyResult === "warning"
+        ? [153, 102, 0]
+        : [139, 0, 0];
     doc.setTextColor(statusColor[0], statusColor[1], statusColor[2]);
-    doc.text(`Status Verifikasi: ${verifyMessage.replace(/^[✅❌⚠️]\s*/, "")}`, margin, currentY);
+    doc.text(
+      `Status Verifikasi: ${verifyMessage.replace(/^[✅❌⚠️]\s*/, "")}`,
+      margin,
+      currentY
+    );
     currentY += 10;
-    doc.setTextColor(0,0,0);
+    doc.setTextColor(0, 0, 0);
 
     doc.setFont("helvetica", "normal");
     doc.text("Pesan yang Diverifikasi:", margin, currentY);
     currentY += 7;
     doc.setFont("courier", "normal");
-    const splitVerifyMessageText = doc.splitTextToSize(verifyInput.message, contentWidth);
+    const splitVerifyMessageText = doc.splitTextToSize(
+      verifyInput.message,
+      contentWidth
+    );
     doc.text(splitVerifyMessageText, margin, currentY);
-    currentY += (splitVerifyMessageText.length * 5) + 7;
+    currentY += splitVerifyMessageText.length * 5 + 7;
 
     doc.setFont("helvetica", "normal");
     doc.text("Alamat Penanda Tangan yang Diharapkan:", margin, currentY);
@@ -227,19 +283,32 @@ export default function SignAndVerifyPage() {
     currentY += 7;
     doc.setFont("courier", "normal");
     doc.setFontSize(7);
-    const splitVerifySignature = doc.splitTextToSize(verifyInput.signature, contentWidth);
+    const splitVerifySignature = doc.splitTextToSize(
+      verifyInput.signature,
+      contentWidth
+    );
     doc.text(splitVerifySignature, margin, currentY);
 
     const pageHeight = doc.internal.pageSize.getHeight();
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
     doc.setTextColor(100);
-    doc.text(`Laporan ini dibuat pada ${new Date().toLocaleString()}`, pageWidth / 2, pageHeight - 15, { align: "center" });
-    doc.text("Diverifikasi menggunakan sistem SignProof", pageWidth / 2, pageHeight - 10, { align: "center" });
+    doc.text(
+      `Laporan ini dibuat pada ${new Date().toLocaleString()}`,
+      pageWidth / 2,
+      pageHeight - 15,
+      { align: "center" }
+    );
+    doc.text(
+      "Diverifikasi menggunakan sistem SignProof",
+      pageWidth / 2,
+      pageHeight - 10,
+      { align: "center" }
+    );
 
     doc.save("hasil-verifikasi-signproof.pdf");
   };
-  
+
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -249,7 +318,8 @@ export default function SignAndVerifyPage() {
         setUploadedFile(null);
         return;
       }
-      if (file.size > 2 * 1024 * 1024) { // Maks 2MB
+      if (file.size > 2 * 1024 * 1024) {
+        // Maks 2MB
         alert("Ukuran file PDF maksimal adalah 2MB.");
         e.target.value = null;
         setUploadedFile(null);
@@ -269,24 +339,48 @@ export default function SignAndVerifyPage() {
 
     switch (verifyResult) {
       case "valid":
-        bgColor = "bg-green-600/20 border-green-600/30"; textColor = "text-green-400"; IconComponent = FaCheckCircle; break;
+        bgColor = "bg-green-600/20 border-green-600/30";
+        textColor = "text-green-400";
+        IconComponent = FaCheckCircle;
+        break;
       case "invalid":
-        bgColor = "bg-red-600/20 border-red-600/30"; textColor = "text-red-400"; IconComponent = FaTimesCircle; break;
+        bgColor = "bg-red-600/20 border-red-600/30";
+        textColor = "text-red-400";
+        IconComponent = FaTimesCircle;
+        break;
       case "warning":
-        bgColor = "bg-yellow-500/20 border-yellow-500/30"; textColor = "text-yellow-300"; IconComponent = FaTimesCircle; break; 
-      case "error": default:
-        bgColor = "bg-red-700/20 border-red-700/30"; textColor = "text-red-500"; IconComponent = FaTimesCircle; break;
+        bgColor = "bg-yellow-500/20 border-yellow-500/30";
+        textColor = "text-yellow-300";
+        IconComponent = FaTimesCircle;
+        break;
+      case "error":
+      default:
+        bgColor = "bg-red-700/20 border-red-700/30";
+        textColor = "text-red-500";
+        IconComponent = FaTimesCircle;
+        break;
     }
 
     return (
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} ref={resultRef} className={`p-4 sm:p-6 mt-6 rounded-xl border ${bgColor}`}>
-        <div className={`flex items-center justify-center text-lg sm:text-xl font-bold mb-4 ${textColor}`}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        ref={resultRef}
+        className={`p-4 sm:p-6 mt-6 rounded-xl border ${bgColor}`}
+      >
+        <div
+          className={`flex items-center justify-center text-lg sm:text-xl font-bold mb-4 ${textColor}`}
+        >
           <IconComponent className="mr-2 sm:mr-3 text-xl sm:text-2xl flex-shrink-0" />
           <span className="text-center">{cleanVerifyMessageText}</span>
         </div>
         {verifyResult === "valid" && verifyInput.message && (
-          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={exportVerifyPDF}
-            className="w-full mt-4 py-2.5 sm:py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all duration-300 flex items-center justify-center text-sm sm:text-base">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={exportVerifyPDF}
+            className="w-full mt-4 py-2.5 sm:py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all duration-300 flex items-center justify-center text-sm sm:text-base"
+          >
             <FaFileDownload className="mr-2" />
             Unduh Laporan Verifikasi
           </motion.button>
@@ -294,21 +388,39 @@ export default function SignAndVerifyPage() {
       </motion.div>
     );
   };
-  
+
   const tabItems = [
     { id: "sign", label: "Tanda Tangan", icon: <FaFileSignature /> },
     { id: "verify", label: "Verifikasi", icon: <FaCheckCircle /> },
   ];
 
   const featureItems = [
-    { icon: <FaShieldAlt />, title: "Keamanan Maksimal", description: "Dilindungi oleh teknologi blockchain dan kriptografi modern untuk integritas data." },
-    { icon: <FaKey />, title: "Verifikasi Instan & Akurat", description: "Proses verifikasi tanda tangan yang cepat dan dapat diandalkan melalui blockchain." },
-    { icon: <FaFileSignature />, title: "Antarmuka Intuitif", description: "Platform yang dirancang untuk kemudahan penggunaan bagi semua kalangan." },
+    {
+      icon: <FaShieldAlt />,
+      title: "Keamanan Maksimal",
+      description:
+        "Dilindungi oleh teknologi blockchain dan kriptografi modern untuk integritas data.",
+    },
+    {
+      icon: <FaKey />,
+      title: "Verifikasi Instan & Akurat",
+      description:
+        "Proses verifikasi tanda tangan yang cepat dan dapat diandalkan melalui blockchain.",
+    },
+    {
+      icon: <FaFileSignature />,
+      title: "Antarmuka Intuitif",
+      description:
+        "Platform yang dirancang untuk kemudahan penggunaan bagi semua kalangan.",
+    },
   ];
 
-  const commonInputClass = "w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-gray-700/70 border border-gray-600/80 text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 shadow-inner text-sm sm:text-base";
-  const commonLabelClass = "block text-gray-300 font-medium mb-1.5 sm:mb-2 text-sm sm:text-base";
-  const commonButtonClass = "w-full py-3 sm:py-3.5 rounded-lg text-white font-bold text-base sm:text-lg disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-300 shadow-lg flex items-center justify-center";
+  const commonInputClass =
+    "w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-gray-700/70 border border-gray-600/80 text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 shadow-inner text-sm sm:text-base";
+  const commonLabelClass =
+    "block text-gray-300 font-medium mb-1.5 sm:mb-2 text-sm sm:text-base";
+  const commonButtonClass =
+    "w-full py-3 sm:py-3.5 rounded-lg text-white font-bold text-base sm:text-lg disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-300 shadow-lg flex items-center justify-center";
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-gray-900 via-blue-950 to-black text-gray-100 flex flex-col">
@@ -316,15 +428,23 @@ export default function SignAndVerifyPage() {
         {/* Hero Section with Background */}
         <div className="relative w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="absolute inset-0 bg-[url('https://stts.edu/lfm/files/shares/Jurnalis/Blog/2021/210426%20-%20BitCoin/ilustrasi-bit-coin-ilustrasi-bitcoin-2_169.jpeg?auto=compress&cs=tinysrgb&w=1920')] bg-cover bg-center opacity-5"></div>
-          
+
           <div className="relative max-w-5xl mx-auto">
             {/* Header */}
-            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center mb-12"
+            >
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
-                {tab === "sign" ? "Verifikasi Dokumen" : "Verifikasi Keaslian Tanda Tangan"} {/* Judul diubah sesuai tab */}
+                {tab === "sign"
+                  ? "Verifikasi Dokumen"
+                  : "Verifikasi Keaslian Tanda Tangan"}{" "}
+                {/* Judul diubah sesuai tab */}
               </h1>
               <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto">
-                Amankan dan verifikasi dokumen digital Anda dengan kekuatan kriptografi dan teknologi blockchain Ethereum.
+                Amankan dan verifikasi dokumen digital Anda dengan kekuatan
+                kriptografi dan teknologi blockchain Ethereum.
               </p>
             </motion.div>
 
@@ -338,9 +458,11 @@ export default function SignAndVerifyPage() {
                     whileTap={{ scale: 0.97 }}
                     onClick={() => setTab(item.id)}
                     className={`flex-1 flex items-center justify-center px-6 py-3 rounded-full font-semibold transition-all duration-300
-                      ${tab === item.id 
-                        ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
-                        : "text-gray-400 hover:text-white hover:bg-gray-700/50"}`}
+                      ${
+                        tab === item.id
+                          ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
+                          : "text-gray-400 hover:text-white hover:bg-gray-700/50"
+                      }`}
                   >
                     <span className="mr-2 text-lg">{item.icon}</span>
                     {item.label}
@@ -361,7 +483,7 @@ export default function SignAndVerifyPage() {
                   <h2 className="text-2xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
                     Formulir Tanda Tangan Digital
                   </h2>
-                  
+
                   {!account ? (
                     <div className="text-center">
                       <motion.button
@@ -373,12 +495,15 @@ export default function SignAndVerifyPage() {
                         <FaEthereum className="mr-2 text-xl" />
                         Hubungkan Dompet
                       </motion.button>
-                      {signError && <p className="text-red-400 mt-3 text-sm">{signError}</p>}
+                      {signError && (
+                        <p className="text-red-400 mt-3 text-sm">{signError}</p>
+                      )}
                     </div>
                   ) : (
                     <div className="text-center text-green-400 font-semibold p-3 bg-green-600/10 rounded-lg border border-green-600/30">
                       <FaCheckCircle className="inline mr-2" />
-                      Terhubung: {account.substring(0,6)}...{account.substring(account.length - 4)}
+                      Terhubung: {account.substring(0, 6)}...
+                      {account.substring(account.length - 4)}
                     </div>
                   )}
 
@@ -400,7 +525,8 @@ export default function SignAndVerifyPage() {
 
                     <div>
                       <label htmlFor="fileUpload" className={commonLabelClass}>
-                        (Opsional) Lampirkan PDF <span className="text-xs text-gray-400">(Max 2MB)</span>
+                        (Opsional) Lampirkan PDF{" "}
+                        <span className="text-xs text-gray-400">(Max 2MB)</span>
                       </label>
                       <div className="relative">
                         <input
@@ -411,11 +537,25 @@ export default function SignAndVerifyPage() {
                           className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                           disabled={!account || signLoading}
                         />
-                        <div className={`${commonInputClass} flex items-center justify-between cursor-pointer ${uploadedFile ? 'border-blue-500' : ''}`}>
-                          <span className={uploadedFile ? 'text-blue-300' : 'text-gray-400'}>
-                            {uploadedFile ? uploadedFile.name : "Pilih file PDF..."}
+                        <div
+                          className={`${commonInputClass} flex items-center justify-between cursor-pointer ${
+                            uploadedFile ? "border-blue-500" : ""
+                          }`}
+                        >
+                          <span
+                            className={
+                              uploadedFile ? "text-blue-300" : "text-gray-400"
+                            }
+                          >
+                            {uploadedFile
+                              ? uploadedFile.name
+                              : "Pilih file PDF..."}
                           </span>
-                          <FaUpload className={uploadedFile ? 'text-blue-400' : 'text-gray-500'} />
+                          <FaUpload
+                            className={
+                              uploadedFile ? "text-blue-400" : "text-gray-500"
+                            }
+                          />
                         </div>
                       </div>
                       {uploadedFile && (
@@ -446,7 +586,9 @@ export default function SignAndVerifyPage() {
                     </motion.button>
 
                     {signError && !signLoading && (
-                      <p className="text-red-400 text-sm text-center">{signError}</p>
+                      <p className="text-red-400 text-sm text-center">
+                        {signError}
+                      </p>
                     )}
 
                     {signature && (
@@ -487,7 +629,10 @@ export default function SignAndVerifyPage() {
 
                   <div className="space-y-4">
                     <div>
-                      <label htmlFor="verifyMessage" className={commonLabelClass}>
+                      <label
+                        htmlFor="verifyMessage"
+                        className={commonLabelClass}
+                      >
                         Pesan / Isi Dokumen Asli
                       </label>
                       <textarea
@@ -503,7 +648,10 @@ export default function SignAndVerifyPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="verifySignature" className={commonLabelClass}>
+                      <label
+                        htmlFor="verifySignature"
+                        className={commonLabelClass}
+                      >
                         Tanda Tangan Digital (Hex)
                       </label>
                       <textarea
@@ -519,7 +667,10 @@ export default function SignAndVerifyPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="expectedSigner" className={commonLabelClass}>
+                      <label
+                        htmlFor="expectedSigner"
+                        className={commonLabelClass}
+                      >
                         Alamat Ethereum Penanda Tangan
                       </label>
                       <input
@@ -538,7 +689,12 @@ export default function SignAndVerifyPage() {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={handleVerify}
-                      disabled={verifyLoading || !verifyInput.message.trim() || !verifyInput.signature.trim() || !verifyInput.expectedSigner.trim()}
+                      disabled={
+                        verifyLoading ||
+                        !verifyInput.message.trim() ||
+                        !verifyInput.signature.trim() ||
+                        !verifyInput.expectedSigner.trim()
+                      }
                       className={`${commonButtonClass} bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700`}
                     >
                       {verifyLoading ? (
@@ -579,7 +735,9 @@ export default function SignAndVerifyPage() {
                   className="bg-gray-800/60 backdrop-blur-lg p-8 rounded-2xl border border-gray-700/70 hover:border-blue-500/50 transition-all duration-300 shadow-xl hover:shadow-blue-500/20"
                 >
                   <div className="mb-4 flex justify-center text-blue-400">
-                    {React.cloneElement(feature.icon, { className: "w-12 h-12" })}
+                    {React.cloneElement(feature.icon, {
+                      className: "w-12 h-12",
+                    })}
                   </div>
                   <h4 className="text-2xl font-bold mb-3 text-center text-white">
                     {feature.title}
@@ -610,11 +768,16 @@ export default function SignAndVerifyPage() {
 
             {/* Kolom Tengah: Navigasi SignProof (DIPERBARUI) */}
             <div>
-              <h5 className="text-lg font-semibold mb-3 text-gray-200">Navigasi</h5>
+              <h5 className="text-lg font-semibold mb-3 text-gray-200">
+                Navigasi
+              </h5>
               <ul className="space-y-2">
                 {signProofFooterInfo.navLinks.map((link, index) => (
                   <li key={index}>
-                    <a href={link.href} className="text-gray-400 hover:text-blue-300 transition-colors duration-300 text-sm">
+                    <a
+                      href={link.href}
+                      className="text-gray-400 hover:text-blue-300 transition-colors duration-300 text-sm"
+                    >
                       {link.text}
                     </a>
                   </li>
@@ -624,17 +787,27 @@ export default function SignAndVerifyPage() {
 
             {/* Kolom Kanan: Kontak & Sosial Media SignProof */}
             <div>
-              <h5 className="text-lg font-semibold mb-3 text-gray-200">Kontak & Sosial Media</h5>
+              <h5 className="text-lg font-semibold mb-3 text-gray-200">
+                Kontak & Sosial Media
+              </h5>
               <ul className="space-y-2">
                 <li className="flex items-center">
-                  <FaEnvelope className="text-gray-400 mr-2" size={18}/>
-                  <a href={signProofFooterInfo.contact.email} className="text-gray-400 hover:text-blue-300 transition-colors duration-300 text-sm">
+                  <FaEnvelope className="text-gray-400 mr-2" size={18} />
+                  <a
+                    href={signProofFooterInfo.contact.email}
+                    className="text-gray-400 hover:text-blue-300 transition-colors duration-300 text-sm"
+                  >
                     Email
                   </a>
                 </li>
                 <li className="flex items-center">
-                  <FaGithub className="text-gray-400 mr-2" size={18}/>
-                  <a href={signProofFooterInfo.contact.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-300 transition-colors duration-300 text-sm">
+                  <FaGithub className="text-gray-400 mr-2" size={18} />
+                  <a
+                    href={signProofFooterInfo.contact.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-blue-300 transition-colors duration-300 text-sm"
+                  >
                     GitHub
                   </a>
                 </li>
@@ -644,7 +817,11 @@ export default function SignAndVerifyPage() {
 
           {/* Copyright SignProof */}
           <div className="pt-8 border-t border-gray-700/50 text-center text-gray-500">
-            <p className="text-sm">&copy; {new Date().getFullYear()} {signProofFooterInfo.copyrightName}. {signProofFooterInfo.copyrightSlogan}</p>
+            <p className="text-sm">
+              &copy; {new Date().getFullYear()}{" "}
+              {signProofFooterInfo.copyrightName}.{" "}
+              {signProofFooterInfo.copyrightSlogan}
+            </p>
           </div>
         </div>
       </footer>

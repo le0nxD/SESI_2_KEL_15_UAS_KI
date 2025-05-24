@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react"; // Pastikan useState diimpor
 import Slider from "react-slick";
 import {
   FaEthereum,
@@ -84,33 +84,51 @@ const features = [
   },
 ];
 
-const sliderSettings = {
-  dots: true,
-  infinite: true,
-  autoplay: true,
-  autoplaySpeed: 5000,
-  speed: 1000,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  fade: true,
-  arrows: false,
-  customPaging: () => (
-    <div className="w-3 h-3 mx-1 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity duration-300" />
-  ),
-};
-
 export default function HomePage() {
   const navigate = useNavigate();
+  const [currentSlide, setCurrentSlide] = useState(0); // State untuk melacak slide aktif
+
+  // Objek sliderSettings sekarang didefinisikan di dalam komponen HomePage
+  // agar bisa mengakses currentSlide dan setCurrentSlide
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    fade: true,
+    arrows: false,
+    afterChange: (index) => setCurrentSlide(index), // Update state saat slide berubah
+    customPaging: (i) => {
+      // Fungsi untuk tampilan titik navigasi
+      const isActive = i === currentSlide;
+      return (
+        <div
+          className={`
+            w-3 h-3 mx-1 rounded-full transition-all duration-300 cursor-pointer
+            ${
+              isActive
+                ? "bg-white opacity-100 scale-110"
+                : "bg-white opacity-50"
+            }
+            ${!isActive ? "hover:opacity-75" : ""}
+          `}
+        />
+      );
+    },
+    dotsClass: "slick-dots !bottom-2 md:!bottom-5", // Mengatur posisi grup titik navigasi
+  };
 
   // Objek untuk konten footer SignProof
   const signProofFooterInfo = {
     description:
       "Pionir dalam revolusi tanda tangan digital, menghadirkan solusi blockchain untuk transaksi yang lebih aman dan terpercaya.",
-    // PERUBAHAN: Link navigasi disesuaikan
     navLinks: [
       { text: "Beranda", href: "/" },
-      { text: "Verifikasi Dokumen", href: "/sign-and-verify" }, // Asumsi halaman verifikasi ada di path ini
-      { text: "About", href: "/tentang-kami" }, // Asumsi halaman about/tentang kami ada di path ini
+      { text: "Verifikasi Dokumen", href: "/sign-and-verify" },
+      { text: "About", href: "/tentang-kami" },
     ],
     contact: {
       email: "mailto:hello@signproof.tech",
@@ -126,6 +144,8 @@ export default function HomePage() {
         {/* Hero Slider */}
         <div className="h-screen">
           <Slider {...sliderSettings}>
+            {" "}
+            {/* Menggunakan sliderSettings yang sudah dimodifikasi */}
             {slides.map((slide, index) => (
               <div key={index}>
                 <div

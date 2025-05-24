@@ -1,33 +1,45 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaShieldAlt, FaLightbulb, FaUsers, FaGithub, FaEnvelope } from "react-icons/fa";
+import {
+  FaShieldAlt,
+  FaLightbulb,
+  FaUsers,
+  FaGithub,
+  FaEnvelope,
+} from "react-icons/fa";
 
 // Data Tim (SignProof)
 const team = [
   {
     name: "Ardhi Fardan Kamil",
-    role: "Founder & Blockchain Architect",
-    photo: "https://i.pinimg.com/736x/7c/70/b6/7c70b6999f3d161c8438ac6e13b2a56d.jpg",
+    role: "Blockchain Architect",
+    photo:
+      "https://i.pinimg.com/736x/7c/70/b6/7c70b6999f3d161c8438ac6e13b2a56d.jpg",
     nim: "237006176",
-    description: "Merancang arsitektur blockchain SignProof, memastikan keamanan dan efisiensi integrasi.",
+    description:
+      "Melakukan perancangan terhadap arsitektur blockchain SignProof guna menjamin keamanan sistem serta efektivitas proses integrasi.",
     github: "https://github.com/Kai2446-cmyk",
     email: "237006176@student.unsil.ac.id",
   },
   {
     name: "Muhammad Naufal Darlian",
-    photo: "https://i.pinimg.com/736x/44/22/84/442284f2f68a587b407fd3c7e3e8a0e2.jpg",
+    photo:
+      "https://i.pinimg.com/736x/44/22/84/442284f2f68a587b407fd3c7e3e8a0e2.jpg",
     role: "UI/UX Designer",
     nim: "237006152",
-    description: "Menciptakan pengalaman pengguna yang intuitif dan menarik secara visual untuk SignProof.",
+    description:
+      "Fokus pada pengembangan antarmuka pengguna, perancangan tampilan yang responsif, serta implementasi halaman dan navigasi.",
     github: "https://github.com/le0nxD",
     email: "237006152@student.unsil.ac.id",
   },
   {
     name: "Muhammad Luthfi Nurhakim",
-    photo: "https://i.pinimg.com/736x/74/86/4a/74864a16c2bae0d89bedfa630ed48e4f.jpg",
+    photo:
+      "https://i.pinimg.com/736x/b3/fe/04/b3fe04bc49f10772b7e4fecfe44a6e87.jpg",
     role: "Smart Contract Developer",
     nim: "237006179",
-    description: "Mengembangkan smart contract yang aman dan optimal untuk protokol blockchain kami.",
+    description:
+      "Melakukan pengembangan smart contract dengan fokus pada aspek keamanan dan performa guna mendukung integritas protokol blockchain yang dikembangkan.",
     github: "https://github.com/Oxiliya",
     email: "237006179@student.unsil.ac.id",
   },
@@ -35,26 +47,30 @@ const team = [
 
 // Data Nilai-Nilai (SignProof)
 const values = [
-    {
-        title: "Inovasi",
-        description: "Selalu berada di garis depan teknologi blockchain dan kriptografi.",
-        icon: <FaLightbulb className="w-12 h-12 text-purple-500" />,
-    },
-    {
-        title: "Keamanan",
-        description: "Mengutamakan keamanan data dan privasi dalam setiap layanan kami.",
-        icon: <FaShieldAlt className="w-12 h-12 text-blue-500" />,
-    },
-    {
-        title: "Kolaborasi",
-        description: "Membangun masa depan digital bersama melalui kemitraan dan transparansi.",
-        icon: <FaUsers className="w-12 h-12 text-green-500" />,
-    },
+  {
+    title: "Inovasi",
+    description:
+      "Selalu berada di garis depan teknologi blockchain dan kriptografi.",
+    icon: <FaLightbulb className="w-12 h-12 text-purple-500" />,
+  },
+  {
+    title: "Keamanan",
+    description:
+      "Mengutamakan keamanan data dan privasi dalam setiap layanan kami.",
+    icon: <FaShieldAlt className="w-12 h-12 text-blue-500" />,
+  },
+  {
+    title: "Kolaborasi",
+    description:
+      "Membangun masa depan digital bersama melalui kemitraan dan transparansi.",
+    icon: <FaUsers className="w-12 h-12 text-green-500" />,
+  },
 ];
 
 export default function TentangKamiPage() {
   const signProofFooterInfo = {
-    description: "Pionir dalam revolusi tanda tangan digital, menghadirkan solusi blockchain untuk transaksi yang lebih aman dan terpercaya.",
+    description:
+      "Pionir dalam revolusi tanda tangan digital, menghadirkan solusi blockchain untuk transaksi yang lebih aman dan terpercaya.",
     navLinks: [
       { text: "Beranda", href: "/" }, // Mengarahkan ke halaman utama
       { text: "Tanda Tangan & Verifikasi", href: "/sign-and-verify" },
@@ -65,7 +81,7 @@ export default function TentangKamiPage() {
       github: "https://github.com/your-signproof-repo", // GANTI DENGAN URL GITHUB SIGNPROOF YANG SEBENARNYA
     },
     copyrightName: "SignProof",
-    copyrightSlogan: "Melangkah Maju di Era Digital."
+    copyrightSlogan: "Melangkah Maju di Era Digital.",
   };
 
   return (
@@ -88,13 +104,15 @@ export default function TentangKamiPage() {
               className="max-w-4xl mx-auto"
             >
               <h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
-                Team SignProof {/* Judul Utama Halaman Tentang Kami */}
+                Team{/* Judul Utama Halaman Tentang Kami */}
               </h1>
               <p className="text-xl md:text-3xl font-semibold text-blue-200 mb-8">
                 Kekuatan di Balik Revolusi Digital
               </p>
               <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-200">
-                Kami adalah tim visioner yang berdedikasi untuk menciptakan masa depan transaksi digital yang aman, transparan, dan efisien melalui kekuatan teknologi blockchain.
+                Kami adalah tim visioner yang berdedikasi untuk menciptakan masa
+                depan transaksi digital yang aman, transparan, dan efisien
+                melalui kekuatan teknologi blockchain.
               </p>
             </motion.div>
           </div>
@@ -105,7 +123,7 @@ export default function TentangKamiPage() {
           <div className="max-w-6xl mx-auto px-6">
             {/* PERBAIKAN DI SINI: Menambahkan teks untuk judul section tim */}
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
-              Tim Kami yang Berdedikasi
+              Kontribusi Team
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
               {team.map((member, index) => (
@@ -130,7 +148,9 @@ export default function TentangKamiPage() {
                       <p className="text-blue-400 font-medium text-sm mb-0.5">
                         {member.role}
                       </p>
-                      <p className="text-white-400 font-medium mb-4 text-lg"> {/* Seharusnya text-gray-400 atau sejenisnya, bukan text-white-400 */}
+                      <p className="text-white-400 font-medium mb-4 text-lg">
+                        {" "}
+                        {/* Seharusnya text-gray-400 atau sejenisnya, bukan text-white-400 */}
                         {member.nim}
                       </p>
                       <p className="text-sm text-gray-300 mb-6 leading-relaxed">
@@ -138,10 +158,18 @@ export default function TentangKamiPage() {
                       </p>
                     </div>
                     <div className="flex items-center justify-start space-x-5 mt-auto">
-                      <a href={member.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                      <a
+                        href={member.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-white transition-colors"
+                      >
                         <FaGithub size={24} />
                       </a>
-                      <a href={`mailto:${member.email}`} className="text-gray-400 hover:text-white transition-colors">
+                      <a
+                        href={`mailto:${member.email}`}
+                        className="text-gray-400 hover:text-white transition-colors"
+                      >
                         <FaEnvelope size={24} />
                       </a>
                     </div>
@@ -195,11 +223,16 @@ export default function TentangKamiPage() {
             </div>
 
             <div>
-              <h5 className="text-lg font-semibold mb-3 text-white">Navigasi</h5>
+              <h5 className="text-lg font-semibold mb-3 text-white">
+                Navigasi
+              </h5>
               <ul className="space-y-2">
                 {signProofFooterInfo.navLinks.map((link, index) => (
                   <li key={index}>
-                    <a href={link.href} className="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
+                    <a
+                      href={link.href}
+                      className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
+                    >
                       {link.text}
                     </a>
                   </li>
@@ -208,17 +241,27 @@ export default function TentangKamiPage() {
             </div>
 
             <div>
-              <h5 className="text-lg font-semibold mb-3 text-white">Kontak & Sosial Media</h5>
+              <h5 className="text-lg font-semibold mb-3 text-white">
+                Kontak & Sosial Media
+              </h5>
               <ul className="space-y-2">
                 <li className="flex items-center">
-                  <FaEnvelope className="text-gray-400 mr-2" size={18}/>
-                  <a href={signProofFooterInfo.contact.email} className="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
+                  <FaEnvelope className="text-gray-400 mr-2" size={18} />
+                  <a
+                    href={signProofFooterInfo.contact.email}
+                    className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
+                  >
                     Email
                   </a>
                 </li>
                 <li className="flex items-center">
-                  <FaGithub className="text-gray-400 mr-2" size={18}/>
-                  <a href={signProofFooterInfo.contact.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
+                  <FaGithub className="text-gray-400 mr-2" size={18} />
+                  <a
+                    href={signProofFooterInfo.contact.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
+                  >
                     GitHub
                   </a>
                 </li>
@@ -227,7 +270,11 @@ export default function TentangKamiPage() {
           </div>
 
           <div className="pt-8 border-t border-gray-700 text-center text-gray-500">
-            <p className="text-sm">&copy; {new Date().getFullYear()} {signProofFooterInfo.copyrightName}. {signProofFooterInfo.copyrightSlogan}</p>
+            <p className="text-sm">
+              &copy; {new Date().getFullYear()}{" "}
+              {signProofFooterInfo.copyrightName}.{" "}
+              {signProofFooterInfo.copyrightSlogan}
+            </p>
           </div>
         </div>
       </footer>
