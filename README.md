@@ -18,7 +18,6 @@
 - 🧑‍💻 [**Muhammad Lutfi Nurhakim (237006179)**](https://github.com/Oxiliya)
 
 ---
----
 ## 📌 Deskripsi Singkat
 
 **SignProof** adalah aplikasi berbasis web yang memungkinkan pengguna untuk melakukan tanda tangan digital menggunakan smart contract di Ethereum Sepolia, serta sistem blockchain lokal berbasis bash. Solusi ini cocok untuk verifikasi dokumen secara desentralisasi dengan antarmuka modern berbasis React.
