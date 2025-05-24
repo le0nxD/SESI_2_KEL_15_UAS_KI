@@ -102,9 +102,6 @@ Kami sangat terbuka untuk:
 ## 📄 Lisensi
 
 Distribusi di bawah lisensi MIT — bebas digunakan untuk pembelajaran, proyek, dan pengembangan lebih lanjut.
-
----
-
 <p align="center">
   Made with ❤️ by the <strong>SignProof Team</strong>
 </p>
